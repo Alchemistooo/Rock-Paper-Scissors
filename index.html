@@ -22,32 +22,63 @@
           return "scissors";
         }
       }
-    console.log(getComputerChoice());
+    // console.log(getComputerChoice());
 
     // Declare and assign variables for the player and computer selection
-    let computerSelection = getComputerChoice();  
-    let playerSelection = prompt("Choose your move: Rock, Paper or Scissors!").toLowerCase();
+    let computerSelection;
+    let playerSelection;
 
     // Function to play a round (can use template literal to reduce number of elifs)
     function playRound(playerSelection, computerSelection) {
       if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats Scissors.";
+        return "You win!";
       } else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You Lose! Paper beats Rock.";
+        return "You lose!";
       } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats Rock.";
+        return "You win!";
       } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper.";
+        return "You lose!";
       } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beats Paper.";
+        return "You win!";
       } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors.";
+        return "You lose!";
       } else {
-        return `${playerSelection} vs ${computerSelection}, it's a draw!`;
+        return "It's a draw!";
       }
     }
-    console.log(playRound(playerSelection, computerSelection));
-      
+    // console.log(playRound(playerSelection, computerSelection));
+
+    // Function to run a game of rock, paper, scissors with a fixed number of rounds.
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
+
+      for (let rounds = 0; rounds < 5; rounds++) {
+        playerSelection = prompt(`Move ${rounds + 1}: Rock, Paper or Scissors!`).toLowerCase();
+        computerSelection = getComputerChoice();
+        let result = playRound(playerSelection, computerSelection);
+
+        if (result === "You win!") {
+          playerScore++;
+          console.log(`You won the round: ${playerScore} : ${computerScore}`) ;
+        } else if (result === "You lose!") {
+          computerScore++;
+          console.log(`You lost the round: ${playerScore} : ${computerScore}`) ;
+        } else {
+          console.log(`Woah, a draw: ${playerScore} : ${computerScore}`) ;
+        }
+
+      }
+
+      if (playerScore > computerScore) {
+        return `Congratulations, you won the game! ${playerScore} : ${computerScore}`
+      } else if (playerScore < computerScore) {
+        return `Unlucky, you lost the game! ${playerScore} : ${computerScore}`
+      } else {
+        return `Close one, it's a draw! ${playerScore} : ${computerScore}`
+      }
+    }
+    console.log(game())
 
   </script>
 </body>
