@@ -24,6 +24,31 @@
       }
     console.log(getComputerChoice());
 
+    // Declare and assign variables for the player and computer selection
+    let computerSelection = getComputerChoice();  
+    let playerSelection = prompt("Choose your move: Rock, Paper or Scissors!").toLowerCase();
+
+    // Function to play a round (can use template literal to reduce number of elifs)
+    function playRound(playerSelection, computerSelection) {
+      if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "You win! Rock beats Scissors.";
+      } else if (playerSelection === "rock" && computerSelection === "paper") {
+        return "You Lose! Paper beats Rock.";
+      } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "You win! Paper beats Rock.";
+      } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return "You Lose! Scissors beats Paper.";
+      } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "You win! Scissors beats Paper.";
+      } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return "You Lose! Rock beats Scissors.";
+      } else {
+        return `${playerSelection} vs ${computerSelection}, it's a draw!`;
+      }
+    }
+    console.log(playRound(playerSelection, computerSelection));
+      
+
   </script>
 </body>
 
